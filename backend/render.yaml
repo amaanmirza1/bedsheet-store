@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: bedsheet-backend
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn bedsheet_store.wsgi:application"
+    envVars:
+      - key: DEBUG
+        value: False
