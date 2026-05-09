@@ -15,7 +15,7 @@ export default function Featured() {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetch("https://linenaura.onrender.com/api/products/")
+    fetch("http://127.0.0.1:8000/")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
