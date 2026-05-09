@@ -15,58 +15,53 @@ export default function Navbar() {
   function handleLogout() {
     localStorage.removeItem("token");
 
-    alert("Logged Out");
-
     window.location.reload();
   }
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-black/40 backdrop-blur-md border-b border-white/10">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-black/50 backdrop-blur-xl border-b border-white/10">
 
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 py-4">
 
         {/* Logo */}
         <Link
           href="/"
-          className="text-2xl font-bold tracking-wide"
+          className="text-xl md:text-2xl font-bold"
         >
           LinenAura
         </Link>
 
-        {/* Navigation */}
-        <div className="flex items-center gap-8 text-sm uppercase tracking-wider">
+        {/* Links */}
+        <div className="flex items-center gap-3 md:gap-8 text-[10px] md:text-sm uppercase tracking-wider overflow-x-auto scrollbar-hide">
 
-          <Link
-            href="/"
-            className="hover:text-zinc-300 transition"
-          >
+          <Link href="/" className="whitespace-nowrap">
             Home
           </Link>
 
           <a
             href="#featured"
-            className="hover:text-zinc-300 transition"
+            className="whitespace-nowrap"
           >
             Shop
           </a>
 
           <a
             href="#featured"
-            className="hover:text-zinc-300 transition"
+            className="whitespace-nowrap"
           >
             Collections
           </a>
 
           <Link
             href="/cart"
-            className="hover:text-zinc-300 transition"
+            className="whitespace-nowrap"
           >
             Cart
           </Link>
 
           <a
             href="mailto:yourgmail@gmail.com"
-            className="hover:text-zinc-300 transition"
+            className="whitespace-nowrap"
           >
             Contact
           </a>
@@ -75,14 +70,14 @@ export default function Navbar() {
             <>
               <Link
                 href="/login"
-                className="hover:text-zinc-300 transition"
+                className="whitespace-nowrap"
               >
                 Login
               </Link>
 
               <Link
                 href="/register"
-                className="px-5 py-2 bg-white text-black rounded-full font-semibold hover:scale-105 transition"
+                className="px-3 py-2 md:px-5 md:py-2 bg-white text-black rounded-full font-semibold whitespace-nowrap"
               >
                 Register
               </Link>
@@ -90,7 +85,7 @@ export default function Navbar() {
           ) : (
             <button
               onClick={handleLogout}
-              className="px-5 py-2 bg-red-500 rounded-full hover:bg-red-600 transition"
+              className="px-3 py-2 md:px-5 md:py-2 bg-red-500 rounded-full whitespace-nowrap"
             >
               Logout
             </button>

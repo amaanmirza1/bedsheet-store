@@ -1,14 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black text-white">
+    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-black text-white px-6">
 
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-40 scale-110"
+        className="absolute inset-0 bg-cover bg-center scale-105"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1600&auto=format&fit=crop')",
@@ -19,56 +19,47 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/60" />
 
       {/* Content */}
-      <motion.div
-        initial={{ opacity: 0, y: 80 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="relative z-10 text-center px-6"
-      >
+      <div className="relative z-10 text-center max-w-5xl mx-auto">
 
-        <motion.h1
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          className="text-7xl md:text-8xl font-extrabold leading-tight"
-        >
-          Luxury Bedsheets
-        </motion.h1>
+        <p className="uppercase tracking-[6px] md:tracking-[10px] text-xs md:text-sm text-zinc-300 mb-6">
+          Luxury Bedsheets Collection
+        </p>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.7 }}
-          className="mt-6 text-zinc-300 text-lg max-w-2xl mx-auto"
-        >
-          Elevate your bedroom with premium comfort and elegant modern designs.
-        </motion.p>
+        <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold leading-tight">
 
-        {/* Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1 }}
-          className="flex justify-center gap-4 mt-10"
-        >
+          Elevate
+          <br />
+          Your Bedroom
+
+        </h1>
+
+        <p className="mt-8 text-base md:text-xl text-zinc-300 max-w-2xl mx-auto leading-8">
+
+          Premium comfort, elegant textures,
+          and luxury bedding crafted for
+          modern living.
+
+        </p>
+
+        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
 
           <a
             href="#featured"
-            className="px-8 py-4 bg-white text-black rounded-full font-semibold hover:scale-105 transition duration-300"
+            className="w-full sm:w-auto px-10 py-4 bg-white text-black rounded-full font-semibold hover:scale-105 transition"
           >
             Shop Now
           </a>
 
-          <a
-            href="#featured"
-            className="px-8 py-4 border border-white/30 rounded-full hover:bg-white hover:text-black transition duration-300"
+          <Link
+            href="/collections"
+            className="w-full sm:w-auto px-10 py-4 border border-white/20 rounded-full hover:bg-white hover:text-black transition"
           >
-            Explore
-          </a>
+            Explore Collection
+          </Link>
 
-        </motion.div>
+        </div>
 
-      </motion.div>
+      </div>
 
     </section>
   );

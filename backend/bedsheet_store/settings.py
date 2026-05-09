@@ -24,7 +24,17 @@ CORS_ALLOW_ALL_ORIGINS = True
 SECRET_KEY = 'django-insecure-pvr^%_^p29f#cv*&ojmfh=sa9c5%n#jx9-j0pc$2%m_m$&s+3@'
 
 
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
+
+
+
+
 
 CORS_ALLOW_ALL_ORIGINS = True
 DEBUG = False
