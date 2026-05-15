@@ -8,19 +8,16 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-username = os.getenv("shahrukhkhan")
-email = os.getenv("sk0598153@gmail.com")
-password = os.getenv("key@8265")
+username = "shahrukhkhan"
+email = "sk0598153@gmail.com"
+password = "key@8265"
 
-if username and email and password:
-    if not User.objects.filter(username=shahrukhkhan).exists():
-        User.objects.create_superuser(
-            username=shahrukhkhan,
-            email=sk0598153@gmail.com,
-            password=key@8265
-        )
-        print("Superuser created!")
-    else:
-        print("Superuser already exists.")
+if not User.objects.filter(username=username).exists():
+    User.objects.create_superuser(
+        username=username,
+        email=email,
+        password=password
+    )
+    print("Superuser created!")
 else:
-    print("Superuser env variables missing.")
+    print("Superuser already exists.")
