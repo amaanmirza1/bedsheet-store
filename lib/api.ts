@@ -1,10 +1,6 @@
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL ||
-  "https://linenaura.onrender.com";
-
 export async function getProducts() {
   const response = await fetch(
-    `${API_URL}/api/products/`,
+    "https://linenaura.onrender.com/api/products/",
     {
       cache: "no-store",
     }
