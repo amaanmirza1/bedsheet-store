@@ -15,19 +15,12 @@ export default function RegisterPage() {
   async function handleRegister(e: React.FormEvent) {
     e.preventDefault();
 
-    const res = await fetch(
-      "http://127.0.0.1:8000/api/auth/register/",
-      {
-        method: "POST",
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-        headers: {
-          "Content-Type": "application/json",
-        },
+    const res = await fetch(`${API_URL}/api/products/`);        
 
-        body: JSON.stringify(formData),
-      }
-    );
-
+    const data = await res.json();
+    
     if (res.ok) {
       alert("Account Created");
 

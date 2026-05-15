@@ -15,10 +15,22 @@ export default function Featured() {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+  const fetchProducts = async () => {
+    try {
+      const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+      const res = await fetch(`${API_URL}/api/products/`);
+
+      const data = await res.json();
+
+      setProducts(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  fetchProducts();
+}, []);
 
   return (
     <section

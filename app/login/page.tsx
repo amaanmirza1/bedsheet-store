@@ -14,20 +14,12 @@ export default function LoginPage() {
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
 
-    const res = await fetch(
-      "http://127.0.0.1:8000/api/auth/login/",
-      {
-        method: "POST",
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-        headers: {
-          "Content-Type": "application/json",
-        },
-
-        body: JSON.stringify(formData),
-      }
-    );
+    const res = await fetch(`${API_URL}/api/products/`);
 
     const data = await res.json();
+    
 
     if (data.access) {
       localStorage.setItem(

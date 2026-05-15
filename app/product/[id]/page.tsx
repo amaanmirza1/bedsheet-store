@@ -22,9 +22,9 @@ export default function ProductPage({
     async function fetchProduct() {
       const { id } = await params;
 
-      const res = await fetch(
-        `http://127.0.0.1:8000/api/products/${id}/`
-      );
+      const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+      const res = await fetch(`${API_URL}/api/products/`);
 
       const data = await res.json();
 
