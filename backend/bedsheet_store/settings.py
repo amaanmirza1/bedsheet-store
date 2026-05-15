@@ -8,8 +8,6 @@ SECRET_KEY = 'django-insecure-pvr^%_^p29f#cv*&ojmfh=sa9c5%n#jx9-j0pc$2%m_m$&s+3@
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
     "linenaura.onrender.com",
 ]
 
