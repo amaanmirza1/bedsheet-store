@@ -42,7 +42,15 @@ DEBUG = False
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "linenaura.onrender.com",
+    "https://linenaura.onrender.com",
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "https://linenaurain.vercel.app",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://linenaurain.vercel.app",
 ]
 
 
