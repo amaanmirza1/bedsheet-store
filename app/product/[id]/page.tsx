@@ -14,17 +14,19 @@ interface Product {
 export default function ProductPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
-}) {
+  params: { id: string };
+})
+ {
   const [product, setProduct] = useState<Product | null>(null);
 
   useEffect(() => {
     async function fetchProduct() {
-      const { id } = await params;
 
       const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-      const res = await fetch(`${API_URL}/api/products/`);
+      const res = await fetch(
+            `https://linenaura.onrender.com/api/products/${params.id}/`
+      );
 
       const data = await res.json();
 
