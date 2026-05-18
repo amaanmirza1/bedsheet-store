@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 import { addToCart } from "@/lib/cart";
 
 interface Product {
@@ -11,18 +12,22 @@ interface Product {
   image: string;
 }
 
-export default function ProductPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default function ProductPage() {
+
+  const params = useParams();
+
+  const id = params.id;
+
   const [product, setProduct] = useState<Product | null>(null);
 
   useEffect(() => {
+
     async function fetchProduct() {
+
       try {
+
         const res = await fetch(
-          `https://linenaura.onrender.com/api/products/${params.id}/`
+          `https://linenaura.onrender.com/api/products/${id}/`
         );
 
         if (!res.ok) {
@@ -32,13 +37,19 @@ export default function ProductPage({
         const data = await res.json();
 
         setProduct(data);
+
       } catch (error) {
+
         console.error("Error fetching product:", error);
+
       }
     }
 
-    fetchProduct();
-  }, [params.id]);
+    if (id) {
+      fetchProduct();
+    }
+
+  }, [id]);
 
   if (!product) {
     return (
@@ -50,14 +61,17 @@ export default function ProductPage({
 
   return (
     <main className="min-h-screen bg-black text-white px-6 py-24">
+
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
 
         <div>
+
           <img
-            src={`https://linenaura.onrender.com${product.image}`}
+            src={product.image}
             alt={product.name}
             className="w-full rounded-3xl object-cover"
           />
+
         </div>
 
         <div className="flex flex-col justify-center">
@@ -77,6 +91,7 @@ export default function ProductPage({
           <button
             onClick={() => {
               addToCart(product);
+
               alert("Product Added To Cart");
             }}
             className="mt-10 px-8 py-4 bg-white text-black rounded-full font-semibold hover:scale-105 transition duration-300 w-fit"
@@ -85,7 +100,9 @@ export default function ProductPage({
           </button>
 
         </div>
+
       </div>
+
     </main>
   );
 }
