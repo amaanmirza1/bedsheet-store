@@ -14,24 +14,42 @@ export default function LoginPage() {
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
 
-    const API_URL = process.env.NEXT_PUBLIC_API_URL;
-
-    const res = await fetch(`${API_URL}/api/products/`);
-
-    const data = await res.json();
-    
-
-    if (data.access) {
-      localStorage.setItem(
-        "token",
-        data.access
+    try {
+      const res = await fetch(
+        "https://linenaura.onrender.com/login/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
       );
 
-      alert("Login Successful");
+      const data = await res.json();
 
-      router.push("/");
-    } else {
-      alert("Invalid Credentials");
+      if (data.access) {
+
+        localStorage.setItem(
+          "token",
+          data.access
+        );
+
+        alert("Login Successful");
+
+        router.push("/");
+      } else {
+
+        console.log(data);
+
+        alert("Invalid Credentials");
+      }
+
+    } catch (error) {
+
+      console.log(error);
+
+      alert("Something went wrong");
     }
   }
 
