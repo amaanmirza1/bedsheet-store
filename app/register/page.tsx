@@ -15,18 +15,33 @@ export default function RegisterPage() {
   async function handleRegister(e: React.FormEvent) {
     e.preventDefault();
 
-    const API_URL = process.env.NEXT_PUBLIC_API_URL;
+    try {
+      const res = await fetch(
+        "https://linenaura.onrender.com/register/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
-    const res = await fetch(`${API_URL}/api/products/`);        
+      const data = await res.json();
 
-    const data = await res.json();
-    
-    if (res.ok) {
-      alert("Account Created");
+      if (res.ok) {
+        alert("Account Created Successfully");
 
-      router.push("/login");
-    } else {
-      alert("Registration Failed");
+        router.push("/login");
+      } else {
+        console.log(data);
+
+        alert("Registration Failed");
+      }
+    } catch (error) {
+      console.log(error);
+
+      alert("Something went wrong");
     }
   }
 
