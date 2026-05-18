@@ -21,7 +21,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # CORS
 CORS_ALLOWED_ORIGINS = [
-    "https://linenauraind.vercel.app",
+    "https://linenauraabc.vercel.app",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
